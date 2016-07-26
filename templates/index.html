@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+		<article>
+			<h2>{{ _("searchcountries") }}</h2>
+
+            <a class="login-link" href="/all">{{ _("allcountries") }}</a>
+
+            <br>
+            <br>
+
+            <div id="accordion-1">
+                <h3>{{ _("searchbycapital") }}</h3>
+                <div>
+                    <p>
+                        <form method="post" action="/capital">
+                            <table>
+                                <tr>
+                                    <td class="label">
+                                        {{ _("searchbycapital") }}
+                                    </td>
+                                    <td>
+                                        <input type="text" name="capital" value="{{capital}}">
+                                    </td>
+                                </tr>
+                            </table>
+                            <input type="submit" value='{{ _("searchbutton") }}'>
+                        </form>
+                    
+                </div>
+                
+                <h3>{{ _("searchbyname") }}</h3>
+                <div>
+                    <p>
+                        <form method="post" action="/name">
+                            <table>
+                                <tr>
+                                    <td class="label">
+                                        {{ _("searchbyname") }}
+                                    </td>
+                                    <td>
+                                        <input type="text" name="name" value="{{name}}">
+                                    </td>
+                                </tr>
+                            </table>
+                            <input type="submit">
+                        </form>
+                    
+                </div>
+
+            </div>
+		</article>
+{% endblock %}

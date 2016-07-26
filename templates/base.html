@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link type="text/css" rel="stylesheet" href="/static/main.css" />
+
+  <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+  <script>
+         $(function() {
+            $( "#accordion-1" ).accordion({
+               collapsible: true, active: false
+            });
+         });
+  </script>
+
+  <title>{{ _("searchcountries") }}</title>
+</head>
+
+<body>
+  <section>
+    <header>
+      <a href="/" class="main-title">
+        {{ _("searchcountries") }}
+      </a>
+
+      <div class="login-area">
+
+          <a class="login-link" href="/lang?locale=es_ES">ES</a>
+          |
+          <a class="login-link" href="/lang?locale=en_US">EN</a>
+
+      </div>
+    </header>
+
+    <div id="content">
+    {% block content %}
+    {% endblock %}
+    </div>
+  </section>
+  <footer>
+      <div class="footer-area">
+          <p class="">{{ _("developedby") }} <a class="login-link" href="mailto:javier.paradela.vila@gmail.com">javier</a>
+      </div>
+  </footer>
+</body>
+
+</html>
+

@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<a class="login-link" href="/">{{ _("previouspage") }}</a>
+
+	<br>
+	
+	{% if error_pais %}
+
+	<br>
+	<article>
+			<div class="error">
+				{{ error_pais }}
+			</div>
+	</article>
+	<br>
+	{% else %}
+	<br>
+		<div id="accordion-1">
+		{% for pais in contenido %}
+			{% for data in pais %}
+				{% if data[0] == 'name' %}
+					<h3>{{ data[1] }}</h3>
+				{% endif %}
+			{% endfor %}
+			<div class="pais">
+
+				<p>
+				
+				<table>
+					{% for data in pais %}
+					<tr>
+						<td>
+		            		<dt>{{ data[0] }}</dt>
+		        		</td>
+		        		<td>
+		        			<dd>
+		        			{% set comma = joiner(",") %}
+
+		        			{% if is_list(data[1]) %}
+
+		        				{% for inner_data in data[1] %}
+
+		        					{{ comma() }} {{ inner_data }}
+
+		            			{% endfor %}
+
+		            		{% elif data[1] is mapping %}
+
+		            			{% for k, v in data[1].items() %}
+
+		            				{{ comma() }} {{ k }} {{ ':' }} {{ v }}
+
+		            			{% endfor %}
+
+		            		{% else %}
+
+		            			{{data[1]}}
+		            		
+		            		{% endif %}
+		            		</dd>
+		            	</td>
+		            </tr>
+		        {% endfor %}
+	        	</table>
+	      		
+	      		
+			</div>	
+			
+		
+		<br>
+		<br>
+
+		{% endfor %}
+	</div>
+	{% endif %}
+{% endblock %}
